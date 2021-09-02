@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='https://screenfeedcontent.blob.core.windows.net/html/airports.js'></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="search-row">
+        <div class="row">
+            <div class="column-head">
+              <p>WADIIA</p>
+            </div>
+            <div class="column-head">
+                <i class="fa fa-plane"></i>  <i class="fa fa-bed"></i>  <i class="fa fa-train"></i>  <i class="fa fa-male"></i>
+            </div>
+            <div class="column-head" style="visibility: hidden;">
+                <p>###############################</p>
+            </div>
+            <div class="column-head">
+              <p>INR ₹</p>
+            </div>
+            <div class="column-head">
+              <p>Support</p>
+            </div>
+            <div class="column-head">
+                <p>Your trips</p>
+            </div>
+          </div>
+        </div>
+
+    <div class="form-search">
+        <form class="form-inline" method="GET" action="" onsubmit="return redirectURL();">
+
+
+            <select onchange="ToCity(); return false;" name="trip" id="trip">
+            <option value="OneWay">One way</option>
+            <option value="RoundTrip">Round trip</option>
+            <option value="MultiCity">Multi city</option>
+            </select>
+
+            <input id="fromCity" name="fromCity" placeholder="From" autocomplete="off">
+
+            <button type="button" onclick="switchText(); return false;" id="switch"><i class="fa fa-exchange"></i></button>
+
+            <input id="toCity" name="toCity" placeholder="To" autocomplete="off">
+
+            <!-- <input type="text" id="fromDate" name="fromDate" placeholder="From date" onfocus="(this.type='date')" onblur="(this.type='text')"> -->
+
+            <input type="date" name="fromDate" id="datetoday" title="From date">
+
+            <input type="text" style="display: none;" id="toDate" name="toDate" placeholder="To date" onfocus="(this.type='date')" onblur="(this.type='text')" title="To date">
+
+            <input type="number" min="1" placeholder="No. of. passengers" name="traveller" id="traveller">
+
+            <button type="submit">Search Flights</button>
+
+        </form>
+    </div>
+
+    <div class="search-row">
+        <div class="row" style="text-decoration: underline;">
+            <div class="column-head">
+              <p>Airlines</p>
+            </div>
+            <div class="column-head">
+              <p>Departure</p>
+            </div>
+            <div class="column-head">
+              <p>Arrival</p>
+            </div>
+            <div class="column-head">
+              <p>Duration</p>
+            </div>
+            <div class="column-head">
+                <p>Price</p>
+            </div>
+            <div class="column-head" style="visibility: hidden;">
+                <p>dummydum</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 10px; height: 10px;"></div>
+
+<div class="search-row">
+    <div class="row">
+        <div class="column">
+          <img src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/6E_2x.png" alt="flight logo"><br>
+          <a href="#">Flight details </a>
+        </div>
+        <div class="column">
+          <h3>18:35</h3>
+          <p>MAA  →  BLR</p>
+        </div>
+        <div class="column">
+          <h3>19:40</h3>
+        </div>
+        <div class="column">
+          <h3>1h 5m</h3>
+          <p>non-stop</p>
+        </div>
+        <div class="column">
+            <h2>₹3,362</h2>
+        </div>
+        <div class="column book">
+            <button type="submit">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 10px; height: 10px;"></div>
+
+    <div class="search-row">
+        <div class="row">
+            <div class="column">
+              <img src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/6E_2x.png" alt="flight logo"><br>
+              <a href="#">Flight details </a>
+            </div>
+            <div class="column">
+              <h3>18:35</h3>
+              <p>MAA  →  BLR</p>
+            </div>
+            <div class="column">
+              <h3>19:40</h3>
+            </div>
+            <div class="column">
+              <h3>1h 5m</h3>
+              <p>non-stop</p>
+            </div>
+            <div class="column">
+                <h2>₹3,362</h2>
+            </div>
+            <div class="column book">
+                <button type="submit">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 10px; height: 10px;"></div>
+
+        <div class="search-row">
+            <div class="row">
+                <div class="column">
+                  <img src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/6E_2x.png" alt="flight logo"><br>
+                  <a href="#">Flight details </a>
+                </div>
+                <div class="column">
+                  <h3>18:35</h3>
+                  <p>MAA  →  BLR</p>
+                </div>
+                <div class="column">
+                  <h3>19:40</h3>
+                </div>
+                <div class="column">
+                  <h3>1h 5m</h3>
+                  <p>non-stop</p>
+                </div>
+                <div class="column">
+                    <h2>₹3,362</h2>
+                </div>
+                <div class="column book">
+                    <button type="submit">Book</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="width: 10px; height: 10px;"></div>
+
+            <div class="search-row">
+    <div class="row">
+        <div class="column">
+          <img src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/6E_2x.png" alt="flight logo"><br>
+          <a href="#">Flight details </a>
+        </div>
+        <div class="column">
+          <h3>18:35</h3>
+          <p>MAA  →  BLR</p>
+        </div>
+        <div class="column">
+          <h3>19:40</h3>
+        </div>
+        <div class="column">
+          <h3>1h 5m</h3>
+          <p>non-stop</p>
+        </div>
+        <div class="column">
+            <h2>₹3,362</h2>
+        </div>
+        <div class="column book">
+            <button type="submit">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 10px; height: 10px;"></div>
+
+    <div class="search-row">
+    <div class="row">
+        <div class="column">
+          <img src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/6E_2x.png" alt="flight logo"><br>
+          <a href="#">Flight details </a>
+        </div>
+        <div class="column">
+          <h3>18:35</h3>
+          <p>MAA  →  BLR</p>
+        </div>
+        <div class="column">
+          <h3>19:40</h3>
+        </div>
+        <div class="column">
+          <h3>1h 5m</h3>
+          <p>non-stop</p>
+        </div>
+        <div class="column">
+            <h2>₹3,362</h2>
+        </div>
+        <div class="column book">
+            <button type="submit">Book</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

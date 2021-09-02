@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="search-row">
+        <div class="row">
+            <div class="column-head">
+              <p>WADIIA</p>
+            </div>
+            <div class="column-head">
+                <i class="fa fa-plane"></i>  <i class="fa fa-bed"></i>  <i class="fa fa-train"></i>  <i class="fa fa-male"></i>
+            </div>
+            <div class="column-head" style="visibility: hidden;">
+                <p>###############################</p>
+            </div>
+            <div class="column-head">
+              <p>INR ₹</p>
+            </div>
+            <div class="column-head">
+              <p>Support</p>
+            </div>
+            <div class="column-head">
+                <p>Your trips</p>
+            </div>
+          </div>
+        </div>
+
+    <div class="form-search">
+        <form class="form-inline" method="GET" action="" onsubmit="return redirectURL();">
+
+
+            <select onchange="ToCity(); return false;" name="trip" id="trip">
+            <option value="OneWay">One way</option>
+            <option value="RoundTrip">Round trip</option>
+            <option value="MultiCity">Multi city</option>
+            </select>
+
+            <input id="fromCity" name="fromCity" placeholder="From" autocomplete="off">
+
+            <button type="button" onclick="switchText(); return false;" id="switch"><i class="fa fa-exchange"></i></button>
+
+            <input id="toCity" name="toCity" placeholder="To" autocomplete="off">
+
+            <!-- <input type="text" id="fromDate" name="fromDate" placeholder="From date" onfocus="(this.type='date')" onblur="(this.type='text')"> -->
+
+            <input type="date" name="fromDate" id="datetoday" title="From date">
+
+            <input type="text" style="display: none;" id="toDate" name="toDate" placeholder="To date" onfocus="(this.type='date')" onblur="(this.type='text')" title="To date">
+
+            <input type="number" min="1" placeholder="No. of. passengers" name="traveller" id="traveller">
+
+            <button type="submit">Search Flights</button>
+
+        </form>
+    </div>
+
+    <div class="search-row">
+        <div class="row" style="text-decoration: underline;">
+            <div class="column-head">
+              <p>Airlines</p>
+            </div>
+            <div class="column-head">
+              <p>Departure</p>
+            </div>
+            <div class="column-head">
+              <p>Arrival</p>
+            </div>
+            <div class="column-head">
+              <p>Duration</p>
+            </div>
+            <div class="column-head">
+                <p>Price</p>
+            </div>
+            <div class="column-head" style="visibility: hidden;">
+                <p>dummydum</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 10px; height: 10px;"></div>
+
+<div class="search-row">
+    <div class="row">
+        <div class="column">
+          <img src="https://fastui.cltpstatic.com/image/upload/resources/images/logos/air-logos/6E_2x.png" alt="flight logo"><br>
+          <a href="#">Flight details </a>
+        </div>
+        <div class="column">
+          <h3>18:35</h3>
+          <p style="display: inline;" id="fromDiv"></p>  →  <p style="display: inline;" id="toDiv"></p>
+        </div>
+        <div class="column">
+          <h3>19:40</h3>
+        </div>
+        <div class="column">
+          <h3>1h 5m</h3>
+          <p>non-stop</p>
+        </div>
+        <div class="column">
+            <h2>₹3,362</h2>
+        </div>
+        <div class="column book">
+            <button type="submit">Book</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div>
+        <p id="write1"></p>
+        <p id="write2"></p>
+        <p id="write3"></p>
+        <p id="write4"></p>
+        <p id="write5"></p>
+        <p id="write6"></p>
+        <p id="write7"></p>
+        <p id="write8"></p>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var url = document.location.href,
+            params = url.split('?')[1].split('&'),
+            data = {}, tmp;
+            for (var i = 0, l = params.length; i < l; i++) {
+                tmp = params[i].split('=');
+                data[tmp[0]] = tmp[1];
+            }
+
+            data.sourceCity = data.sourceCity.replaceAll('-',' ');
+            data.destinationCity = data.destinationCity.replaceAll('-',' ');
+
+            var fromCity = data.fromCode + " - " + data.sourceCity;
+            var toCity = data.toCode + " - " + data.destinationCity;
+
+            document.getElementById('trip').value = data.trip;
+            document.getElementById('fromCity').value = fromCity;
+            document.getElementById('toCity').value = toCity;
+            document.getElementById('datetoday').value = data.fromDate;
+            document.getElementById('traveller').value = data.travellers;
+            document.getElementById('fromDiv').innerHTML = data.fromCode;
+            document.getElementById('toDiv').innerHTML = data.toCode;
+        }       
+        
+        </script>
+</body>
+</html>
